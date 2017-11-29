@@ -1,8 +1,4 @@
-\# Languages
+# Languages
 
-
-
-\* \[English\]\(en/\)
-
-\* \[Русский\]\(ru/\)
-
+* [English](en/)
+* [Русский](ru/)

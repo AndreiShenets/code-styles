@@ -1,6 +1,7 @@
 # Choose your language
 
-* [Introduction](/README.md "English")
+* [English](/en/README.md)
+* [Русский](/ru/README.md)
 
 # Code style guide I recommend at the moment
 
@@ -12,5 +13,5 @@ One more time I would like to pay attention that I propose **recommendations **I
 
 One more warning. This guide easily can change if I found more useful rules or handy ways to style code.
 
-The first part I would recommend to read is [General principles](/general-principles.md). In this part I describe general cross-language principles that I use to style my code. After that you are free to check guides for specific languages.
+The first part I would recommend to read is [General principles](/en/general-principles.md). In this part I describe general cross-language principles that I use to style my code. After that you are free to check guides for specific languages.
 

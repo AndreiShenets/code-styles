@@ -9,7 +9,7 @@ I have been keen on forcing code styles since I started to write code using Delp
 
 Looking back at intention to created ideal code style I understand that it is impossible. Especially if you want to invent law-like-rules. But what is achievable is to recommend some style which significantly can improve quality of your code in different aspects. Moreover my recommendations are mostly applicable to any language.
 
-One more time I would like to pay attention that I propose **recommendations **I would possible call them **strong recommendations**. The difference is that recommendation is something that up to you to follow when on oposite side strong recommendations is something that you have to follow but there can be some exclusions in particular case. And of course this guide is not a law.
+One more time I would like to pay attention that I propose **recommendations** I would possible call them **strong recommendations**. The difference is that recommendation is something that up to you to follow when on oposite side strong recommendations is something that you have to follow but there can be some exclusions in particular case. And of course this guide is not a law.
 
 One more warning. This guide easily can change if I found more useful rules or handy ways to style code.
 

@@ -204,3 +204,234 @@ int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBe
 [Kevlin Henney - Seven Ineffective Coding Habits of Many Programmers](https://vimeo.com/97329157)
 
 # Примеры
+
+**Настоятельно рекомендую** все блоки выражений **всегда** окружать скобками или другими способами языка явно указывающими на начало и конец блока. Пример if ниже.
+
+```csharp
+public ResultType ArbitraryMethodName(
+    FirstArgumentType firstArgument,
+    SecondArgumentType secondArgument,
+    ThirdArgumentType thirdArgument)
+{
+    LocalVariableType localVariable = Method(
+        firstArgument,
+        secondArgument);
+
+    if (localVariable.IsSomething(thirdArgument,
+        SOME_SHOUTY_CONSTANT))
+    {
+        DoSomethingWith(localVariable);
+    }
+
+    return localVariable.GetSomething();
+}
+```
+
+Так же **никогда** не пишите логически разные части в одну строку как ниже:
+
+```csharp
+public void ArbitraryMethodName(
+    FirstArgumentType firstArgument,
+    SecondArgumentType secondArgument,
+    ThirdArgumentType thirdArgument)
+{
+    LocalVariableType localVariable = Method(
+        firstArgument,
+        secondArgument);
+    if (localVariable.IsSomething()) return
+    return localVariable.GetSomething();
+}
+```
+
+```Javascript
+function arbitraryMethodName(
+    firstArgument,
+    secondArgument,
+    thirdArgument
+) {
+    doSomethingWith(localVariable);
+
+    var localVariable = method(
+        firstArgument,
+        secondArgument
+    );
+
+    if (localVariable.IsSomething(
+        thirdArgument,
+        SOME_SHOUTY_CONSTANT))
+    {
+        doSomethingWith(localVariable);
+    }
+
+    return localVariable.getSomething();
+}
+```
+
+Здесь использован еще один прием, который я **рекомендую**. Если у вас получается очень длинная строка кода в if, то стоит подумать о вынесении внутреннего содержимого в переменную.
+
+```javascript
+function arbitraryMethodName(
+    firstArgument,
+    secondArgument,
+    thirdArgument
+) {
+    doSomethingWith(localVariable);
+
+    var localVariable = method(
+        firstArgument,
+        secondArgument
+    );
+
+    var isSomething = localVariable.IsSomething(
+        thirdArgument,
+        SOME_SHOUTY_CONSTANT
+    );
+
+    if (isSomething)
+    {
+        doSomethingWith(localVariable);
+    }
+
+    return localVariable.getSomething();
+}
+```
+
+Пример использования цепочки вызовов. Тоже самом можно применить к конкатенации строк через `+`
+
+```csharp
+public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
+{
+    return viewModels
+        .OrderBy(item => item.LoweredAlbumArtist)
+        .ThenBy(item => item.AlbumNameForSorting)
+        .ThenBy(item => item.Year)
+        .ThenBy(item => item.DiskNumber)
+        .ThenBy(item => item.TrackNumber)
+        .ThenBy(item => item.Title);
+}
+```
+
+Здесь показана **рекомендация** по форматирования лямбда функций. А так же **рекомендация** писать комментарии для кода, который не возможно понять быстро даже визуальным мышлением. Комментарий прочитать быстрее :)
+
+```csharp
+// Processing added or updated libraries
+IEnumerable<ILibrary> addedLibraries = state
+    .Libraries
+    .Where(libraryKeyValuePair =>
+        {
+            ILibrary existingLibrary = _libraries
+                .GetValueOrDefault(libraryKeyValuePair.Key);
+
+            // The library is added
+            return existingLibrary == null
+                // Library has been changed
+                || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
+        })
+    .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
+```
+
+Здесь пример как из примера выше сделать хуже - нужно использовать var. **Настоятельно рекомендую** в любом языке использовать явные объявления всего что только можно. Это позволит вам понимать с чем вы имеете дело без использования значительного количества логического мышления.
+
+Мне могут возразить, что редакторы подсвечивают типы. Те, кто так думает, наведитесь мышкой на пример ниже, считайте что это запрос на слияние, и задумайтесь много ли вам браузер подсветил. И на сколько больше времени вы потратили на наведение, чем просто на прочтение.
+
+```csharp
+// Processing added or updated libraries
+var addedLibraries = state
+    .Libraries
+    .Where(libraryKeyValuePair =>
+        {
+            ILibrary existingLibrary = _libraries
+                .GetValueOrDefault(libraryKeyValuePair.Key);
+
+            // The library is added
+            return existingLibrary == null
+                // Library has been changed
+                || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
+        })
+    .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
+```
+
+```csharp
+ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
+    new ImageFilteringDrawerPool<ArtistViewModel>(
+        imageDrawerOptions,
+        new AllPassFilter<ArtistViewModel>(),
+        new ExactYShift(TrackDrawingHelper.GROUP_INFO_MARGIN,
+            new ExactXShift(TrackDrawingHelper.GROUP_INFO_MARGIN)
+        ),
+        new ResultHeightLogic(
+            new ExactYShift(-TrackDrawingHelper.GROUP_INFO_MARGIN,
+                new ExactXShift(-TrackDrawingHelper.GROUP_INFO_MARGIN,
+                    new TopRightShift(TrackDrawingHelper.NARROW_SPACE_SIZE)
+                )
+            )
+        )
+    );
+```
+
+```csharp
+if (range.TryGetValue("Group", out groupName)
+    && range.TryGetValue("RIC", out ric)
+    && (range.TryGetValue("ProcessedAt", out processedAtStr)
+        || range.TryGetValue("Start", out startStr))
+    && TimeSpan.TryParse(startStr, out start)
+    && range.TryGetValue("End", out endStr)
+    && TimeSpan.TryParse(endStr, out end)
+    && DateTime.TryParse(processedAtStr, out processedAt))
+{
+```
+
+```sql
+select
+    t1.*,
+    t2.Id
+from Table1 t1
+    inner join Table2 t2
+        on t1.Id == t2.Table1Id
+where t1.Filter like '%empty%'
+    and t2.Filter like '%non-empty%'
+order by t2.Name
+
+```
+
+```javascript
+<div className='top-menu' >
+  <Link
+    to='/settings'
+    className='top-menu__setting-link'
+  >
+    {user.name || user.email}
+  </Link>
+  <button
+    onClick={logOut}
+    className='top-menu__logout-button'
+  >
+    Log out
+  </button>
+</div>
+```
+
+```xml
+<Page
+    :Class="MusicPlayer.Views.ArtistsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:mvvm="using:Prism.Windows.Mvvm"
+    mvvm:ViewModelLocator.AutoWireViewModel="True"
+>
+    <Grid>
+        <ScrollBar
+            x:Name="VerticalScrollBar"
+            Grid.Column="1"
+            Orientation="Vertical"
+            Visibility="Collapsed"
+            IndicatorMode="MouseIndicator"
+            LargeChange="128"
+            SmallChange="32"
+     />
+    </Grid>
+</Page>
+```

@@ -404,7 +404,7 @@ order by t2.Name
 
 ```
 
-*JavaScript*
+*JSX*
 ```jsx
 <div className='top-menu' >
   <Link

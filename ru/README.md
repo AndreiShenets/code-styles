@@ -1,6 +1,6 @@
 # Выберите ваш язык / Choose your language
 
-* [English](/en/README.md)
+* [English](/README.md)
 * [Русский](/ru/README.md)
 
 # Стиль кода, который я рекомендую на данный момент

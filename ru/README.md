@@ -85,7 +85,7 @@
 2. Текст выделяется посредством близости к другому тексту
 3. Текст выравнен
 
-Пункт 1 это регистр символов. Например константы могут выглядеть вот так
+Пункт 1 это регистр символов. Например константы могут выглядеть вот так:
 ```csharp
 public const string SOME_SHOUTY_CONSTANT = "My const";
 ```
@@ -207,6 +207,7 @@ int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBe
 
 **Настоятельно рекомендую** все блоки выражений **всегда** окружать скобками или другими способами языка явно указывающими на начало и конец блока. Пример if ниже.
 
+*C\#*
 ```csharp
 public ResultType ArbitraryMethodName(
     FirstArgumentType firstArgument,
@@ -229,6 +230,7 @@ public ResultType ArbitraryMethodName(
 
 Так же **никогда** не пишите логически разные части в одну строку как ниже:
 
+*C\#*
 ```csharp
 public void ArbitraryMethodName(
     FirstArgumentType firstArgument,
@@ -243,7 +245,8 @@ public void ArbitraryMethodName(
 }
 ```
 
-```Javascript
+*JavaScript*
+```javascript
 function arbitraryMethodName(
     firstArgument,
     secondArgument,
@@ -269,6 +272,7 @@ function arbitraryMethodName(
 
 Здесь использован еще один прием, который я **рекомендую**. Если у вас получается очень длинная строка кода в if, то стоит подумать о вынесении внутреннего содержимого в переменную.
 
+*JavaScript*
 ```javascript
 function arbitraryMethodName(
     firstArgument,
@@ -298,6 +302,7 @@ function arbitraryMethodName(
 
 Пример использования цепочки вызовов. Тоже самом можно применить к конкатенации строк через `+`
 
+*C\#*
 ```csharp
 public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
 {
@@ -313,6 +318,7 @@ public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
 
 Здесь показана **рекомендация** по форматирования лямбда функций. А так же **рекомендация** писать комментарии для кода, который не возможно понять быстро даже визуальным мышлением. Комментарий прочитать быстрее :)
 
+*C\#*
 ```csharp
 // Processing added or updated libraries
 IEnumerable<ILibrary> addedLibraries = state
@@ -334,6 +340,7 @@ IEnumerable<ILibrary> addedLibraries = state
 
 Мне могут возразить, что редакторы подсвечивают типы. Те, кто так думает, наведитесь мышкой на пример ниже, считайте что это запрос на слияние, и задумайтесь много ли вам браузер подсветил. И на сколько больше времени вы потратили на наведение, чем просто на прочтение.
 
+*C\#*
 ```csharp
 // Processing added or updated libraries
 var addedLibraries = state
@@ -351,6 +358,7 @@ var addedLibraries = state
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
+*C\#*
 ```csharp
 ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
     new ImageFilteringDrawerPool<ArtistViewModel>(
@@ -369,6 +377,7 @@ ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
     );
 ```
 
+*C\#*
 ```csharp
 if (range.TryGetValue("Group", out groupName)
     && range.TryGetValue("RIC", out ric)
@@ -381,6 +390,7 @@ if (range.TryGetValue("Group", out groupName)
 {
 ```
 
+*SQL*
 ```sql
 select
     t1.*,
@@ -394,6 +404,7 @@ order by t2.Name
 
 ```
 
+*JavaScript*
 ```javascript
 <div className='top-menu' >
   <Link
@@ -411,6 +422,7 @@ order by t2.Name
 </div>
 ```
 
+*Xaml*
 ```xml
 <Page
     :Class="MusicPlayer.Views.ArtistsPage"

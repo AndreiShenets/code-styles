@@ -425,7 +425,7 @@ order by t2.Name
 *Xaml*
 ```xml
 <Page
-    :Class="MusicPlayer.Views.ArtistsPage"
+    x:Class="MusicPlayer.Views.ArtistsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

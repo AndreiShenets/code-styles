@@ -364,12 +364,15 @@ ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
     new ImageFilteringDrawerPool<ArtistViewModel>(
         imageDrawerOptions,
         new AllPassFilter<ArtistViewModel>(),
-        new ExactYShift(TrackDrawingHelper.GROUP_INFO_MARGIN,
+        new ExactYShift(
+            TrackDrawingHelper.GROUP_INFO_MARGIN,
             new ExactXShift(TrackDrawingHelper.GROUP_INFO_MARGIN)
         ),
         new ResultHeightLogic(
-            new ExactYShift(-TrackDrawingHelper.GROUP_INFO_MARGIN,
-                new ExactXShift(-TrackDrawingHelper.GROUP_INFO_MARGIN,
+            new ExactYShift(
+                -TrackDrawingHelper.GROUP_INFO_MARGIN,
+                new ExactXShift(
+                    -TrackDrawingHelper.GROUP_INFO_MARGIN,
                     new TopRightShift(TrackDrawingHelper.NARROW_SPACE_SIZE)
                 )
             )
@@ -443,7 +446,7 @@ order by t2.Name
             IndicatorMode="MouseIndicator"
             LargeChange="128"
             SmallChange="32"
-     />
+        />
     </Grid>
 </Page>
 ```

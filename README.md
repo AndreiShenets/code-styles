@@ -5,7 +5,7 @@
 
 # Summary
 
-<div style="color:red">Test</div>
+<div color="red">Test</div>
 
 # Code style guide I recommend at the moment
 

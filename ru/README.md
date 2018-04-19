@@ -405,7 +405,7 @@ order by t2.Name
 ```
 
 *JavaScript*
-```javascript
+```jsx
 <div className='top-menu' >
   <Link
     to='/settings'

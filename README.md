@@ -25,7 +25,10 @@ One more warning. This guide easily can change if I found more useful rules or h
 
 When you write code you should follow to the *rules* above and what is important! in order that described above. Firstly your code has to be readable. Justification is really simple: according to some researches developers spend about 70-80% percent of time to code reading. Add to this that your code is read by your colleagues and they usually didn't see the code before. Add to this that week or month later you will forget what your code about and you need to read and understand it again.
 
-**Вывод**: в первую очередь код должен быть читаемым.
+**Conclusion**: First of all code has to be readable.
+
+However it is worth to remember that apart from reading of code you also write code. It means that your style should give well-readable code and in the same time your style should be as simple as possible. This will allow you to write code faster and at the same time follow the recommendation about readable code. If there is a choice between writing of a little more code in a little less convenient way, but result is more readable, then it's worth **choosing of less conveniently, but more readable style**.
+However, it is well to remember that the code is not only written for the first time, but it is also supported. This means that if you change your code, you should not spend extra effort to bring it into a readable form. First of all, this refers to code alignment, which should be avoided in most cases (alignment will be discussed in more detail later).
 
 Однако стоит помнить, что вы еще и пишете код, поэтому ваш стиль должен давать хорошо читаемым и быть чем проще тем лучше. Это даст возможность писать код быстрее и при этом соблюдать рекомендации. Если стоит выбор между написать немного больше, написать чуть менее удобно, но более читаемо, то стоит выбрать **написать менее удобно, но более читаемо**.
 Однако стоит хорошо помнить, что код не только пишется в первый раз, но и поддерживается. Это значит, что при изменении вашего кода вы не должны тратить дополнительных усилий для приведения его в читаемый вид. В первую очередь это относится к выравниванию кода, которого стоит избегать в большинстве случаев (выравнивание будет рассмотрено подробнее позже).

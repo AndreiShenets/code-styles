@@ -5,7 +5,7 @@
 
 # Code style guide I recommend at the moment
 
-I have been keen on forcing code styles since I started to write code using Delphi language. The reason is quite simple - undoubtedly styled code much much more readable and easy to understand. As result I tried to invent some rules which make all developers happy. It is obvious that I failed. My code style was changing while I were writing on Delphi. It also was changing when I had switched to C\# and Javascript. My code style is changing from time to time even now. Each language gave me additional issues, examples and style practices.
+I have been keen on forcing code styles since I started to write code using Delphi language. The reason is quite simple - undoubtedly styled code much much more readable and easy to understand. As result I tried to invent some rules which make all developers happy. It is obvious that I failed. My code style was changing while I were writing on Delphi. It also was changing when I had switched to C\# and Javascript. My code style is changing from time to time now. Each language gave me additional issues, examples and style practices.
 
 Looking back at intention to created ideal code style I understand that it is impossible. Especially if you want to invent law-like-rules. There are always unsatisfied people. There are always people that would like to do something in different way. There are always people that think differently.
 
@@ -20,49 +20,45 @@ One more warning. This guide easily can change if I found more useful rules or h
 # Primary principles
 
 1. Code has to have good readability => Readability
-2. Code has to be easy writable and easy changable => Writability
+2. Code has to be easy writable and easy changeable => Writability
 3. Code has to look good (You should like it from visual point of view) => Visual style
 
-When you write code you should follow to the *rules* above and what is important! in order that described above. Firstly your code has to be readable. Justification is really simple: according to some researches developers spend about 70-80% percent of time to code reading. Add to this that your code is read by your colleagues and they usually didn't see the code before. Add to this that week or month later you will forget what your code about and you need to read and understand it again.
+When you write code you should follow to the "rules" above and what is important! in order that described above. Firstly your code has to be readable. Justification is really simple: according to some researches developers spend about 70-80% percent of time to code reading. Add to this that your code is read by your colleagues and they usually didn't see the code before. Add to this that week or month later you will forget what your code about and you need to read and understand it again.
 
 **Conclusion**: First of all code has to be readable.
 
-However it is worth to remember that apart from reading of code you also write code. It means that your style should give well-readable code and in the same time your style should be as simple as possible. This will allow you to write code faster and at the same time follow the recommendation about readable code. If there is a choice between writing of a little more code in a little less convenient way, but result is more readable, then it's worth **choosing of less conveniently, but more readable style**.
-However, it is well to remember that the code is not only written for the first time, but it is also supported. This means that if you change your code, you should not spend extra effort to bring it into a readable form. First of all, this refers to code alignment, which should be avoided in most cases (alignment will be discussed in more detail later).
+However it is worth to remember that apart from reading of code you also write code. It means that your style should give well-readable code and in the same time your style should be as simple as possible to write code in handy way. Simple style also allow you to write code faster. If there is a choice between writing of a little more code in a little less convenient way, but result is more readable, then it's worth **choosing of less conveniently, but more readable style**.
+Also it is worth to remember that code writes not only first time but also supports. It means that changing should not add additional efforts to make code readable after changes. Especially, this refers to code alignment, which should be avoided in most cases (alignment will be discussed in more detail later).
 
-Однако стоит помнить, что вы еще и пишете код, поэтому ваш стиль должен давать хорошо читаемым и быть чем проще тем лучше. Это даст возможность писать код быстрее и при этом соблюдать рекомендации. Если стоит выбор между написать немного больше, написать чуть менее удобно, но более читаемо, то стоит выбрать **написать менее удобно, но более читаемо**.
-Однако стоит хорошо помнить, что код не только пишется в первый раз, но и поддерживается. Это значит, что при изменении вашего кода вы не должны тратить дополнительных усилий для приведения его в читаемый вид. В первую очередь это относится к выравниванию кода, которого стоит избегать в большинстве случаев (выравнивание будет рассмотрено подробнее позже).
+**Conclusion**: Your style should allow to write and change code in handy way, but readability is preferable.
 
-**Вывод**: Код должно быть удобно писать и модифицировать, но читаемость всё же важнее.
+If you follow to first two point then you can adjust other aspects as you *like*. Many developers put third "rule" above other two. I really do not recommend to do so. Instead I recommend, especially if you are in charge, set common style policy for all developers in your team - code should have only one style. Additionally I strongly recommend to set up automatic style checking and formatting tools like ReSharper for C# or eslint for JavaScript. Together with this I can set up pre-commit hooks to follow style policies. However leave some abilities to switch off these checks for particular cases. You may need it if you write matrix as one-dimensional array.
 
-При соблюдении первых двух пунктов вы можете менять свой стиль как вам *нравится*. Многие разработчики ставят этот пункт во главу списка. Я крайней не рекомендую так делать. Вместо это я настоятельно рекомендую, особенно если вы уполномоченное лицо на проекте, прописать для всех членов команды стиль, который вы будете использовать на проекте, дабы код был одинаковым. К этому я настоятельно рекомендую настроить проверку стиля автоматическими инструментами, например ReSharper для C# или eslint в JavaScript. Можно добавить инструменты для автоматического форматирования, если есть желание. Также можно настроить pre-commit hooks в вашей системе контроля версий для отсечения "плохих" коммитов. Однако оставьте возможность отменить автоформатирование, иногда определенное исключение действительно важно. Например если вы описываете одномерный массив как матрицу.
+If you follow all recommendation you will get really readable easy modifiable code and you will like this code visually.
+You and any member of your team will be able to read your code easily, even if he won't understand it. Some developers say "It is better to have readable code and bad solution architecture than vice versa".
+Also you will see that performance of your team is higher because of automatic tools and singly style.
 
-При соблюдении всех правил вы получите хорошо читаемый, легко модифицируемый код, который вам будет нравится визуально.
-Вы и любой член вашей команды сможет легко прочитать код, пускай, возможно, и не понять его. Как говориться "Лучше хорошо читаемый код и плохая архитектура, чем наоборот".
-Ваш производительность, а так же производительность вашей команды вырастет за счет автоматических инструментов и единого стиля.
+# Readability
 
-# Читаемость
+## Line length
 
-## Длина строки
+I **recommend to limit maximum length of a line of code** to **120** symbols.
 
-Я **рекомендую ограничиться максимальную длину строки** кода **120** символами.
+**Justification:**
 
-**Обоснование:**
+First of all I would like to mention issues that unlimited line length gives. First of all it decrease readability of your code so violates first recommendation. Too long line stops you from reading and understanding of code and forces you to use horizontal scrolling, what is unhandy and time-consuming. Also long lines hide important parts of code abroad screen, if you do not see it you can not take it in account and possibility to introduce some issue is higher. For example you can miss some important parameters or conditions.
 
-В обосновании в первую очередь хочу рассказать о проблемах со слишком длинными строками. В первую очередь они ухудшают читаемость, т.е. нарушают основополагающее правило 1. Слишком длинная строка заставляет вас отвлекаться от чтения и понимания и переключаться на горизонтальную прокрутку, что крайней не удобно и затратно по времени. Кроме того если что-то скрыто за границей экрана, может быть потеряно из вида и не принято во внимание, что приведет к ошибкам в коде или другим проблемам. Например вы не заметили важные параметры функции или пропустили важное условие.
+So conclusion is **it is bad to have too long lines**
 
-Отсюда следует вывод **слишком длинные строки - плохо**
-
-Но какая же длина строки приемлемая? Давайте рассмотрим как обычному человеку удобно читать код и как можно делать это наиболее быстро и продуктивно. Согласно некоторым исследования, удобная полоса чтения для среднестатистического человека порядка 80-100 символов. Тут можно было бы сказать: "Давайте ограничим длину 100 символами", однако стоит принять во внимание, что на данный момент для работы используются широкоформатные мониторы, чаще всего FullHD (1920x1080), например у нас стандарт 22-24 дюйма, возможно там где вы работаете другой стандарт, опишу это ниже.
-Самые частые операции с кодом, исходя из практики, следующие:
-    - Чтение
-    - Чтение на двух разных мониторах
-    - Чтение на одном мониторе в редакторе с двумя панелями
-    - Написание / Изменение
-    - Написание / Изменение в редакторе с двумя панелями
-    - Сравнение в инструменте с двумя панелями
-    - Решение конфликтов при слиянии в инструменте с тремя панелями
-    - Чтения запроса на слияние (Pull request) в инструменте или на сайте. Две панели.
+But what line length is good? Let's think about how usual developer reads code and how we can do it in the fastest and handiest way. According to some researches the most convenient width of line to read is about 80-100 symbols. At this point we would say let's limit line width at 100 symbols. But let's also take in account that at the moment we often use wide-screen FullHD monitors with resolution at least (1920x1080). For example in our company 24" Full HD monitors are standard.
+Also the most common actions with code are:Reading
+    - Reading
+    - Reading using one monitor but two panel editor
+    - Writing / Changing
+    - Writing / Changing in editor using two or more panels
+    - Comparing in tool with two panels
+    - Merge conflict solving in tool with three panels
+    - Pull request reading using tool or browser. Also can be two panels.
 
 Принимая во внимание, что вы или ваши коллеги могут использовать / используют две панели на одном мониторе для различных целей, стоит выбирать такую длину строки, которая позволит видеть всю строку кода код в обоих рядом стоящих панелях. Очень хорошо проверять данное правило на запросах на слияние на GitHub. Экспериментально выяснено, что в случае 120 символов:
 1. Обычно всё влазит

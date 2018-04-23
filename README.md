@@ -60,36 +60,36 @@ Also the most common actions with code are:Reading
     - Merge conflict solving in tool with three panels
     - Pull request reading using tool or browser. Also can be two panels.
 
-Принимая во внимание, что вы или ваши коллеги могут использовать / используют две панели на одном мониторе для различных целей, стоит выбирать такую длину строки, которая позволит видеть всю строку кода код в обоих рядом стоящих панелях. Очень хорошо проверять данное правило на запросах на слияние на GitHub. Экспериментально выяснено, что в случае 120 символов:
-1. Обычно всё влазит
-2. Обычно всё влазит даже если у вашего коллеги плохое зрение и больше шрифт
-3. Есть небольшой буфер если перенос строки не возможен или нецелесообразен.
+Taking in account that you or your colleagues can use something with two panels for different purposes we have to choose line length which allows to see full line in both panels. The best place to check this is two panel comparison on GitHub when pull request is reviewed. I experimentally found out that 120 symbol line length is optimal for Full HD monitors:
+1. Usually you see all text in both panels
+2. Usually you see all text in both panels even if you colleague has poor eyesight and enlarged font size
+3. You have small buffer to add a few more symbols above 120 limit if you do not have possibility to put something on new line.
 
-Если у вас в команде размер мониторов и/или расширения выше, то вы определить другую длину строки и зафиксировать ее для всей команды.
+If your team has different monitor sizes or different screen resolutions you can determine your own limit using two panels editor or GitHub pull request.
 
-Отсюда следует вывод **по умолчанию** оптимально использовать ограничение в **120** символов.
+Summarizing all mentioned above **by default** it is optimal to limit line length by **120** symbols.
 
-# Написание и как следствие читаемость
+# Writability and as result readability
 
-Написание это то, от чего сильно зависит читаемость. В первую очередь хочется продолжить тему про то, как обычно человек читает текст. В нашем случае мы рассматриваем чтение слева на право сверху вниз. Мозг человека построен так, что он оптимизирует производительность чтения. Для оптимизации у него есть отличные инструмент, который некоторыми учеными называется визуальное мышление (Visual Thinking). Суть его примерно следующая: когда наш мозг видит (через глаз естественно) что-то, что он часто обрабатывает, он пытается по внешнему виду (как будто по слепку или хэш значению) быстро получить сопоставленный результат (своеобразное кэш хранилище ключ-значение), если ассоциации нет или в процессе быстрой проверки что-то наш мозг насторожило, то задействуется логическое мышление (Logical Thinking), которое детально анализирует то, что написано и делает выводы.
+Code writing is something what readability depends on. First of all I would like to continue the topic about how usual man reads text. In case of code it is from left to right top down. Mans brain usually optimizes reading by mechanism that some scientists call Visual Thinking. The essence of it is about the following when our brain process information from eyes it makes assumptions about content basing on often seen staff and its visual characteristics. It could be said that brain uses some kind of hash in key-value store for quick access to result. If a brain does not have associated result or result looks weird or invalid to our brain then Logical Thinking mechanism is run. Logical thinking is a complete analysis of available information (full understanding of a code in our case).
 
-Примеры такого поведения можно найти в интернете. Есть эксперимент, когда записывается какой-то цвет, например красный, но цвет текста делается, например синий. В первую очередь отрабатывает визуальное мышление синий цвет + "красный" текст == синий, потом срабатывает "проверка" и задействуется логическое мышление синий цвет + "красный" текст == ~~синий~~ красный. Особенность данного поведения мозга в том, что визуальное мышление работает на порядки быстрее логического.
+Example of such brain's behavior can be found in the Internet. There is an experiment when some color is written down, red for example, but font color for this text is blue. At first step our brain sees blue color + "red" text and assumes that result is blue but after that validation fails and brain runs Logical Thinking blue color + "red" text == ~~blue~~ red - precise result is red. The main issue with Logical Thinking mechanism that it is much slower than Visual Thinking.
 
-Отсюда можно сделать **вывод**: лучше писать код так, чтобы максимально задействовать визуальное мышление.
+**Conclusion**: it is worth to write code in a way when Visual Thinking is used as often as possible.
 
-Как?
+How?
 
-Мозг задействует в первую очередь визуальное мышление если:
-1. Текст выделяется размером
-2. Текст выделяется посредством близости к другому тексту
-3. Текст выравнен
+Brain uses Visual Thinking as primary instrument if:
+1. Size of a text differs
+2. There is some proximity between text elements
+3. Text is aligned
 
-Пункт 1 это регистр символов. Например константы могут выглядеть вот так:
+We can achieve the first one by using symbols' case like below:
 ```csharp
 public const string SOME_SHOUTY_CONSTANT = "My const";
 ```
 
-Пункт 2 это фактически группировка кода в маленькие логически связанные блоки. Блоки разделаются пустой строкой. Например:
+We can achive the second one by grouping code in logic blocks like following:
 
 ```csharp
 public ResultType ArbitraryMethodName(
@@ -113,27 +113,27 @@ public ResultType ArbitraryMethodName(
 }
 ```
 
-## Выравнивание (пункт 3)
+## Alignment (third point)
 
-В примере выше так же использовано и выравнивание.
+Examples above also contain alignment.
 
-Если коротко, то для выравнивания должны быть использованы только новая строка + отступы. Клавиша Enter и клавиша Tab, которая трансформируется будь то в символ табуляции, 2, 4 или N пробелов. Я **настоятельно рекомендую** использовать пробелы, т.к. вы точно не будете иметь проблем с отступами, например, в случае с запросами на слияние.
+If speak short then to use alignment New Line + Indent should be used. That means Enter and Tab. Tab can be set up to tabulation, 2, 4 or N spaces. I **strongly recommend** to use spaces because you always will be precise in your formatting and do not depend on editor. For example it is important for GitHub pull request.
 
-**Настоятельная рекомендация**: группировка и выравнивание блоков происходит за счет переноса их на новую строку, если блок относится к предыдущей строке добавляется сдвиг вправо на один отступ.
+**Strong recommendation**: group and align your blocks by New Line. If some block refers to previous line add one Indent to it.
 
-**Обоснование:**
+**Justification:**
 
-Цель задействовать визуальное мышление.
-Почему только отступы и новые строки? Как следует из правила 2 - код должен быть легко модифицируемым. Часто разработчики любят делать вот так:
+The goals is allow to brain to use Visual Thinking.
+So why only New Lines and Indents? If you check my second initial recommendation - the code should be easily modifiable and supportable. Often developers like to align code in following way:
 
 ```Java
 int doNotFormat = likeThis(someArgumentOrExpression,
                            anotherArgumentOrExpression);
 ```
 
-С одной стороны всё круто, задействовано визуальное мышление, с другой сломано удобство редактирования. Например, при переименовании функции выравнивание сломается.
+From one point of view the brain will use Visual Thinking and it is true but from other point of view supportability is broken. For example we used refactoring and renamed function. After that alignment and as result Visual Thinking is broken.
 
-**Вывод**: код должен быть устойчивым к изменениям. Намного лучше написать:
+**Conclusion**: code has to be sustainable to changes. It is much better to write:
 
 ```Java
 int insteadFormat =
@@ -153,47 +153,47 @@ int orFormat = somethingLikeThis(
 );
 ```
 
-Рекомендую самый последний вариант, так как он позволяет более четко отделить параметры, параметры проще добавлять, менять местами и так далее.
+Personally I recommend the last one because it has more explicit parameters block, adding or swapping parameters is easier.
 
-Почему плохо вот так:
+Why following is bad:
 
 ```Java
 int insteadFormat = somethingLikeThis(someArgumentOrExpression,
     anotherArgumentOrExpression);
 ```
 
-Тут хорошее место чтобы упомянуть, что хорошо читаемый код во многом является хорошо читаемым из-за осмысленных имен функций, методов, переменных... Если того будет требовать читаемость, код может стать чем-то таким:
+It is worth to mention that well readable code is often such because of good-named functions, methods and variables. If you decide to improve readability and renamed something you can get following:
 
 ```Java
 int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBetterReadability(someArgumentOrExpression,
     anotherArgumentOrExpression);
 ```
 
-В этом случае параметры разделены большим расстоянием, получилось так потому, что мы использовали переименование где-то в другом месте, а "плохо" стало тут - "отломано" визуальное мышление. Т.е. код не является устойчивым к изменениям.
+As you see in this case parameters are separated. Someone renamed function in other place bad readability is broken here. So example above is not sustainable.
 
-# Краткие итоги
+# Summary
 
-**Что делаем:**
-- Считаем что Читаемость > Написание > Внешний вид
-- Считаем что Визуальное мышление > Логическое мышление и используем:
-    - Длина строки <= 120 (по умолчанию)
-    - Логические блоки с помощью новой строки
-    - Выравнивание новой строкой и отступами
-    - "Устойчивый" код
+**What we do:**
+- Consider Readability > Writability > Visual Style
+- Consider Visual Thinking > Logical thinking. For that use:
+    - Line limit <= 120 (by default)
+    - Group logic blocks by adding New Lines between
+    - Use alignment by New Line and Indent
+    - Keep in mind code has to be sustainable
 
-**Что используем:**
-- Клавишу Enter для новой строки
-- Клавишу Tab для отступа
+**How we do:**
+- Use Enter for New Line
+- Use Tab for indention
 
-Проще некуда!
+As simple as possible!
 
-**Что получаем:**
-- Быстрое чтение сверху вниз с использованием только вертикальной прокрутки
-- Осмысление только важных в данный момент вещей за счет быстрого визуального мышления / увеличение своей производительности и производительности команды
-- Редактирование кода без дополнительных усилий
-- Код выглядит хотя-бы хорошо и в одном стиле.
+**What we get for it:**
+- Really quick reading from left to right top down with using only vertical scroll
+- Our brains processes only really important part and does not check unimportant by filtering them out all by using Visual Thinking. As result your productivity and performance is improved as well as productivity of your team
+- Code modifications do not require addition efforts
+- Code looks at least good and has one style.
 
-# Что посмотреть еще?
+# More to read about?
 
 > To answer the question "What is clean design?" most succinctly: a clean design is one that supports visual thinking so people can meet their informational needs with a minimum of conscious effort.
 *Daniel Higginbotham*
@@ -202,9 +202,9 @@ int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBe
 
 [Kevlin Henney - Seven Ineffective Coding Habits of Many Programmers](https://vimeo.com/97329157)
 
-# Примеры
+# Examples
 
-**Настоятельно рекомендую** все блоки выражений **всегда** окружать скобками или другими способами языка явно указывающими на начало и конец блока. Пример if ниже.
+I **strongly recommed** all expression blocks **always** wrap out with bracers or other ways of explicit block declarations like below:
 
 *C\#*
 ```csharp
@@ -227,7 +227,7 @@ public ResultType ArbitraryMethodName(
 }
 ```
 
-Так же **никогда** не пишите логически разные части в одну строку как ниже:
+Also **never** never write different logical parts in one line like below:
 
 *C\#*
 ```csharp
@@ -244,6 +244,8 @@ public void ArbitraryMethodName(
 }
 ```
 
+Much better:
+
 *JavaScript*
 ```javascript
 function arbitraryMethodName(
@@ -258,6 +260,11 @@ function arbitraryMethodName(
         secondArgument
     );
 
+    if (!localVariable.IsSomething())
+    {
+        return
+    }
+
     if (localVariable.IsSomething(
         thirdArgument,
         SOME_SHOUTY_CONSTANT))
@@ -269,7 +276,7 @@ function arbitraryMethodName(
 }
 ```
 
-Здесь использован еще один прием, который я **рекомендую**. Если у вас получается очень длинная строка кода в if, то стоит подумать о вынесении внутреннего содержимого в переменную.
+Here one more practise I **recommend** If you have really long condition in if-statement then consider to extract it to local variable with meaningful name.
 
 *JavaScript*
 ```javascript
@@ -280,7 +287,7 @@ function arbitraryMethodName(
 ) {
     doSomethingWith(localVariable);
 
-    var localVariable = method(
+    var isSomething = method(
         firstArgument,
         secondArgument
     );
@@ -299,7 +306,7 @@ function arbitraryMethodName(
 }
 ```
 
-Пример использования цепочки вызовов. Тоже самом можно применить к конкатенации строк через `+`
+Example of style together with chaining. The same principal can be used for string concatenation by `+`
 
 *C\#*
 ```csharp
@@ -315,7 +322,20 @@ public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
 }
 ```
 
-Здесь показана **рекомендация** по форматирования лямбда функций. А так же **рекомендация** писать комментарии для кода, который не возможно понять быстро даже визуальным мышлением. Комментарий прочитать быстрее :)
+```csharp
+public override string ToString()
+{
+    return $"{ArtistName};"
+        + $"{AlbumName};"
+        + $"{Title};"
+        + $"{Year};"
+        + $"{DiskNumber};"
+        + $"{TrackNumber};"
+    ;
+}
+```
+
+Following example shows **recommendation** for lambda function formatting. Also I **recommend** to write comments for code that is impossible to quicly understand. It is much fater to read comment.
 
 *C\#*
 ```csharp
@@ -335,9 +355,9 @@ IEnumerable<ILibrary> addedLibraries = state
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
-Здесь пример как из примера выше сделать хуже - нужно использовать var. **Настоятельно рекомендую** в любом языке использовать явные объявления всего что только можно. Это позволит вам понимать с чем вы имеете дело без использования значительного количества логического мышления.
+Following example shows how to make much worse - just use a bit of implicitness by introducing var. I **strongly recommend** in any language to use explicit declaration always where it is possible. That will allow to read and understand code much quicker with using much of Logic Thinking.
 
-Мне могут возразить, что редакторы подсвечивают типы. Те, кто так думает, наведитесь мышкой на пример ниже, считайте что это запрос на слияние, и задумайтесь много ли вам браузер подсветил. И на сколько больше времени вы потратили на наведение, чем просто на прочтение.
+Usually here Holy War begins. Usual objection is "you can hover your mouse over variable". Consider that you are reading pull request in a browser hover your mouse over variable and think how much information your browser shows. Also how much more time did you spend to hovering mouse over instead of just reading?
 
 *C\#*
 ```csharp

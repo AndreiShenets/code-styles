@@ -162,7 +162,7 @@ int insteadFormat = somethingLikeThis(someArgumentOrExpression,
     anotherArgumentOrExpression);
 ```
 
-Тут хорошее место чтобы упомянуть, что хорошо читаемый код во многом является хорошо читаемым из-за осмысленных имен функций, методов, переменных... Если того будет требовать читаемость, код может стать чем-то таким:
+Тут хорошее место чтобы упомянуть, что хорошо читаемый код во многом является хорошо читаемым из-за осмысленных имен функций, методов, переменных (так называемый самоописывающийся код). Если того будет требовать читаемость, код может стать чем-то таким:
 
 ```Java
 int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBetterReadability(someArgumentOrExpression,

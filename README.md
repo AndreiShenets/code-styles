@@ -162,7 +162,7 @@ int insteadFormat = somethingLikeThis(someArgumentOrExpression,
     anotherArgumentOrExpression);
 ```
 
-It is worth to mention that well readable code is often such because of good-named functions, methods and variables. If you decide to improve readability and renamed something you can get following:
+It is worth to mention that well readable code is often such because of good-named functions, methods and variables (self-descriptive code). If you decide to improve readability and renamed something you can get following:
 
 ```Java
 int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBetterReadability(someArgumentOrExpression,

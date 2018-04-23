@@ -215,7 +215,8 @@ public ResultType ArbitraryMethodName(
 {
     LocalVariableType localVariable = Method(
         firstArgument,
-        secondArgument);
+        secondArgument
+    );
 
     if (localVariable.IsSomething(thirdArgument,
         SOME_SHOUTY_CONSTANT))
@@ -244,6 +245,8 @@ public void ArbitraryMethodName(
 }
 ```
 
+Намного лучше:
+
 *JavaScript*
 ```javascript
 function arbitraryMethodName(
@@ -269,7 +272,7 @@ function arbitraryMethodName(
 }
 ```
 
-Здесь использован еще один прием, который я **рекомендую**. Если у вас получается очень длинная строка кода в if, то стоит подумать о вынесении внутреннего содержимого в переменную.
+Здесь использован еще один прием, который я **рекомендую**. Если у вас получается очень условие в if, то стоит подумать о вынесении внутреннего содержимого в локальную переменную с осмысленным названием.
 
 *JavaScript*
 ```javascript
@@ -315,7 +318,20 @@ public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
 }
 ```
 
-Здесь показана **рекомендация** по форматирования лямбда функций. А так же **рекомендация** писать комментарии для кода, который не возможно понять быстро даже визуальным мышлением. Комментарий прочитать быстрее :)
+```csharp
+public override string ToString()
+{
+    return $"{ArtistName};"
+        + $"{AlbumName};"
+        + $"{Title};"
+        + $"{Year};"
+        + $"{DiskNumber};"
+        + $"{TrackNumber};"
+    ;
+}
+```
+
+Здесь показана **рекомендация** по форматирования лямбда функций. А так же **рекомендация** писать комментарии для кода, который не возможно быстро понять. Комментарий прочитать быстрее :)
 
 *C\#*
 ```csharp

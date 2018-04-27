@@ -215,7 +215,8 @@ public ResultType ArbitraryMethodName(
 {
     LocalVariableType localVariable = Method(
         firstArgument,
-        secondArgument);
+        secondArgument
+    );
 
     if (localVariable.IsSomething(thirdArgument,
         SOME_SHOUTY_CONSTANT))

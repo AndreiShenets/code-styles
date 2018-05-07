@@ -232,7 +232,7 @@ Also **never** never write different logical parts in one line like below:
 
 *C\#*
 ```csharp
-public void ArbitraryMethodName(
+public ResultType ArbitraryMethodName(
     FirstArgumentType firstArgument,
     SecondArgumentType secondArgument,
     ThirdArgumentType thirdArgument)
@@ -240,7 +240,7 @@ public void ArbitraryMethodName(
     LocalVariableType localVariable = Method(
         firstArgument,
         secondArgument);
-    if (localVariable.IsSomething()) return
+    if (localVariable.IsSomething()) return default(ReturnType);
     return localVariable.GetSomething();
 }
 ```

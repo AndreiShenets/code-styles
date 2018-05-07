@@ -46,7 +46,7 @@
 
 **Обоснование:**
 
-В обосновании в первую очередь хочу рассказать о проблемах со слишком длинными строками. В первую очередь они ухудшают читаемость, т.е. нарушают основополагающее правило 1. Слишком длинная строка заставляет вас отвлекаться от чтения и понимания и переключаться на горизонтальную прокрутку, что крайней не удобно и затратно по времени. Кроме того если что-то скрыто за границей экрана, может быть потеряно из вида и не принято во внимание, что приведет к ошибкам в коде или другим проблемам. Например вы не заметили важные параметры функции или пропустили важное условие.
+В обосновании хочу рассказать о проблемах со слишком длинными строками. В первую очередь они ухудшают читаемость, т.е. нарушают основополагающее правило 1. Слишком длинная строка заставляет вас отвлекаться от чтения и понимания и переключаться на горизонтальную прокрутку, что крайней не удобно и затратно по времени. Кроме того если что-то скрыто за границей экрана, может быть потеряно из вида и не принято во внимание, что приведет к ошибкам в коде или другим проблемам. Например вы не заметили важные параметры функции или пропустили важное условие.
 
 Отсюда следует вывод **слишком длинные строки - плохо**
 
@@ -232,7 +232,7 @@ public ResultType ArbitraryMethodName(
 
 *C\#*
 ```csharp
-public void ArbitraryMethodName(
+public ResultType ArbitraryMethodName(
     FirstArgumentType firstArgument,
     SecondArgumentType secondArgument,
     ThirdArgumentType thirdArgument)
@@ -240,7 +240,7 @@ public void ArbitraryMethodName(
     LocalVariableType localVariable = Method(
         firstArgument,
         secondArgument);
-    if (localVariable.IsSomething()) return
+    if (localVariable.IsSomething()) return default(ReturnType);
     return localVariable.GetSomething();
 }
 ```
@@ -413,12 +413,15 @@ if (range.TryGetValue("Group", out groupName)
 select
     t1.*,
     t2.Id
-from Table1 t1
+from
+    Table1 t1
     inner join Table2 t2
         on t1.Id == t2.Table1Id
-where t1.Filter like '%empty%'
+where
+    t1.Filter like '%empty%'
     and t2.Filter like '%non-empty%'
-order by t2.Name
+order by
+    t2.Name
 
 ```
 

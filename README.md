@@ -420,13 +420,15 @@ if (range.TryGetValue("Group", out groupName)
 select
     t1.*,
     t2.Id
-from Table1 t1
+from
+    Table1 t1
     inner join Table2 t2
         on t1.Id == t2.Table1Id
-where t1.Filter like '%empty%'
+where
+    t1.Filter like '%empty%'
     and t2.Filter like '%non-empty%'
-order by t2.Name
-
+order by
+    t2.Name
 ```
 
 *JSX*

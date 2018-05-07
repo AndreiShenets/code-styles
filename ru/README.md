@@ -424,7 +424,6 @@ where
     and t2.Filter like '%non-empty%'
 order by
     t2.Name
-
 ```
 
 *JSX*

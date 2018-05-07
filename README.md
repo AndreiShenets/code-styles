@@ -378,6 +378,8 @@ var addedLibraries = state
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
+Complex constructor example:
+
 *C\#*
 ```csharp
 ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
@@ -399,6 +401,8 @@ ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
         )
     );
 ```
+
+Complex if-statement example. It might be a good choice to extract result of the condition to local variable with meaningful name. It gives you understanding what is going on. Or at least put a commentary.
 
 *C\#*
 ```csharp

@@ -51,7 +51,7 @@ First of all, I would like to mention issues that unlimited line length gives. F
 So, conclusion is **it is bad to have too long lines**
 
 But what line length is good? Let's think about how usual developer reads code and how we can do it in the fastest and handiest way. According to some researches the most convenient width of line to read is about 80-100 symbols. At this point we would say let's limit line width at 100 symbols. But let's also take in account that at the moment we often use wide-screen FullHD monitors with resolution at least (1920x1080). For example, in our company 24" Full HD monitors are standard.
-Also, the most common actions with code are: 
+Also, the most common actions with code are:
     - Reading
     - Reading using one monitor but two panel editor
     - Writing / Changing
@@ -215,7 +215,8 @@ public ResultType ArbitraryMethodName(
 {
     LocalVariableType localVariable = Method(
         firstArgument,
-        secondArgument);
+        secondArgument
+    );
 
     if (localVariable.IsSomething(thirdArgument,
         SOME_SHOUTY_CONSTANT))
@@ -231,15 +232,13 @@ Also **never** never write different logical parts in one line like below:
 
 *C\#*
 ```csharp
-public void ArbitraryMethodName(
+public ResultType ArbitraryMethodName(
     FirstArgumentType firstArgument,
     SecondArgumentType secondArgument,
     ThirdArgumentType thirdArgument)
 {
-    LocalVariableType localVariable = Method(
-        firstArgument,
-        secondArgument);
-    if (localVariable.IsSomething()) return;
+    LocalVariableType localVariable = Method(firstArgument, secondArgument);
+    if (localVariable.IsSomething()) return default(ResultType);
     return localVariable.GetSomething();
 }
 ```
@@ -377,6 +376,8 @@ var addedLibraries = state
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
+Complex constructor example:
+
 *C\#*
 ```csharp
 ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
@@ -398,6 +399,8 @@ ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
         )
     );
 ```
+
+Complex if-statement example. It might be a good choice to extract result of the condition to local variable with meaningful name. It gives you understanding what is going on. Or at least put a commentary.
 
 *C\#*
 ```csharp

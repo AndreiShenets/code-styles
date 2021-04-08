@@ -139,7 +139,8 @@ From one point of view the brain will use Visual Thinking and it is true but fro
 int insteadFormat =
     somethingLikeThis(
         someArgumentOrExpression,
-        anotherArgumentOrExpression);
+        anotherArgumentOrExpression
+    );
 
 
 int orFormat = somethingLikeThis(
@@ -218,8 +219,12 @@ public ResultType ArbitraryMethodName(
         secondArgument
     );
 
-    if (localVariable.IsSomething(thirdArgument,
-        SOME_SHOUTY_CONSTANT))
+    if (
+        localVariable.IsSomething(
+            thirdArgument,
+            SOME_SHOUTY_CONSTANT
+        )
+    )
     {
         DoSomethingWith(localVariable);
     }
@@ -341,7 +346,8 @@ Following example shows **recommendation** for lambda function formatting. Also,
 // Processing added or updated libraries
 IEnumerable<ILibrary> addedLibraries = state
     .Libraries
-    .Where(libraryKeyValuePair =>
+    .Where(
+        libraryKeyValuePair =>
         {
             ILibrary existingLibrary = _libraries
                 .GetValueOrDefault(libraryKeyValuePair.Key);
@@ -350,7 +356,8 @@ IEnumerable<ILibrary> addedLibraries = state
             return existingLibrary == null
                 // Library has been changed
                 || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
-        })
+        }
+    )
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
@@ -363,7 +370,8 @@ Holy War begins here. Usual objection is "you can hover your mouse over variable
 // Processing added or updated libraries
 var addedLibraries = state
     .Libraries
-    .Where(libraryKeyValuePair =>
+    .Where(
+        libraryKeyValuePair =>
         {
             var existingLibrary = _libraries
                 .GetValueOrDefault(libraryKeyValuePair.Key);
@@ -372,7 +380,8 @@ var addedLibraries = state
             return existingLibrary == null
                 // Library has been changed
                 || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
-        })
+        }
+    )
     .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
 ```
 
@@ -412,6 +421,22 @@ if (range.TryGetValue("Group", out groupName)
     && range.TryGetValue("End", out endStr)
     && TimeSpan.TryParse(endStr, out end)
     && DateTime.TryParse(processedAtStr, out processedAt))
+{
+```
+
+*C\#*
+```csharp
+if (
+    range.TryGetValue("Group", out groupName)
+    && range.TryGetValue("RIC", out ric)
+    && (range.TryGetValue("ProcessedAt", out processedAtStr)
+        || range.TryGetValue("Start", out startStr)
+    )
+    && TimeSpan.TryParse(startStr, out start)
+    && range.TryGetValue("End", out endStr)
+    && TimeSpan.TryParse(endStr, out end)
+    && DateTime.TryParse(processedAtStr, out processedAt)
+)
 {
 ```
 

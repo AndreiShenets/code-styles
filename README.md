@@ -342,9 +342,10 @@ That is it. As simple as possible.
   - I think they are
 - [x] Principles should be easy to follow.
   - I think they are
-- [ ] Principles should reduce amount of thinking while coding as much as possible and if possible make code nicer to give esthetic pleasure
-  - [x] I think principles **significantly** reduce amount of thinking
-  - [ ] Unfortunately, code does not look nicer, at least to me
+- [x] Principles should reduce amount of thinking while coding as much as possible
+  - I think principles **significantly** reduce amount of thinking
+- [ ] If possible make code nicer to give esthetic pleasure
+  - Unfortunately, code does not look nicer, at least to me
 - [ ] How to measure pleasure?
 
 ## Examples + additional recommendations

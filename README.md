@@ -1,5 +1,7 @@
 ﻿# Code style holy wars
 
+**NOTE: Further version if any can be found [here](https://github.com/AndreiShenets/AndreiShenets/blob/main/code-style-holy-wars/README.md)**
+
 ## A bit of context. Why?
 
 "*I have been keen on forcing code styles since time short after I started writing code using Delphi language. The reason is quite simple - undoubtedly styled code much more readable and easy to understand.*"

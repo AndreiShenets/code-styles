@@ -1,95 +1,158 @@
-﻿# Choose your language / Выберите ваш язык
+﻿# Code style holy wars
 
-* [English](/README.md)
-* [Русский](/ru/README.md)
+## A bit of context. Why?
 
-# Code style guide I recommend at the moment
+"*I have been keen on forcing code styles since time short after I started writing code using Delphi language. The reason is quite simple - undoubtedly styled code much more readable and easy to understand.*"
 
-I have been keen on forcing code styles since I started writing code using Delphi language. The reason is quite simple - undoubtedly styled code much much more readable and easy to understand. As result I tried to invent some rules which make all developers happy. It is obvious that I failed. My code style was changing while I was writing on Delphi. It was also changing when I had switched to C\# and Javascript. My code style is changing from time to time now. Each language gave me additional issues, examples and style practices.
+That were the first sentences from the introduction part of the [previous version](https://github.com/AndreiShenets/code-styles/tree/8d99ae257e0d7a6c26bf83cd34107c3a9421765a) of this text. Was it the true reason? Didn't I lie to myself about it? I think I did at least partially. The true reason was I wanted my code looked in a way I like. Yes, I mostly wanted to like my code visually. When I read non-stopping holy wars about tabs vs spaces, where to put brackets, vars vs explicit types and so on I think others do the same.
 
-Looking back at intention to create ideal code style I understand that it is impossible. Especially if you want to invent law-like-rules. There are always unsatisfied people. There are always people that would like to do something in different way. There are always people that think differently.
+In this text I would like to share my empirical observations regarding what is important, how I format code and why I choose a particular code style. I would like to share principles I came to, how I came to them and what reasons are underneath.
 
-But what is achievable is to recommend some style which can significantly improve quality of your code in different aspects. Moreover, my recommendations are mostly applicable to any language.
+### What should be taken in account
 
-Exactly such guide with recommendations you are reading right now. Also, this guide contains some examples.
+#### Primary programming language is a bias
 
-One more time I would like to pay attention that I propose **recommendations** I would possibly call them **strong recommendations**. The difference is that recommendation is something that is up to you to follow when on opposite side strong recommendation is something that you have to follow but there can be some exclusions in particular case. And of course, this guide is not a law.
+My code style has been changing from time to time since I was writing on Pascal and Delphi at university. It significantly changed when I switched to C\# and when I started to write frontend code using HTML, CSS, JavaScript, later Typescript. Let's add to the context SQL, WPF, React, Angular, a bit of C, C++, Lisp, Go, Java and Python. I cannot even remember all languages I tried or wrote but each language gave me additional issues, examples, style practices and habits. Nevertheless, my primary language has always been dominating. For example, the same when someone can be observed when someone comes from Java world to C# world.
 
-One more warning. This guide can easily change if I find more useful rules or handy ways to style code.
+**The key take away:** It would be great to have non-biased cross language principles. *Is it only my nature to invent universal principles?*
 
-# Primary principles
+#### There are always unsatisfied people
 
-1. Code has to have good readability => Readability
-2. Code has to be easy writable and easy changeable => Writability
-3. Code has to look good (You should like it from visual point of view) => Visual style
+There are always people that would like to do something in different way. There are always people that think differently. There are always additional contexts, languages, habits, reasons of doing things. That is completely ok. That is why there are always people that are not satisfied with ideal cross language principles. Especially if you try to make law-like-rules. People also like to be free in their decisions.
 
-When you write code, you should follow the "rules" from above and what is important! in order that is described above. Firstly, your code has to be readable. Justification is really simple: according to some researches developers spend about 70-80% percent of time reading the code. Add to this that your code is read by your colleagues and they usually haven't seen the code before. Add to this that in a week or a month you will forget what your code is about, and you will need to read and understand it again.
+That why I would like to have principles as **recommendations** or **strong recommendations**. It is still something to follow but there can be exclusions or adaptions if something is not covered. Also, I would like to clearly explain and prove the principles to persuade people that they matter.
 
-**Conclusion**: First of all, code has to be readable.
+It looks achievable to recommend some universal principles which can significantly improve the quality of any code in different aspects. These principles must be revisited, analyzed, simplified, improved each time a new context is added.
 
-However, it is worth to remember that apart from reading code you also write code. It means that your style should give well-readable code and at the same time your style should be as simple as possible to write code in handy way. Simple style also allows you to write code faster. If there is a choice between writing a little more code in a little less convenient way, but result is more readable, then it's worth **choosing of less conveniently, but more readable style**.
-Also, it is worth remembering that code is not only written first time but is also supported. It means that changing should not add additional efforts to make code readable after changes. Especially, this refers to code alignment, which should be avoided in most cases (alignment will be discussed in more detail later).
+**The key take away:** Principles as **recommendations**.
 
-**Conclusion**: Your style should allow to write and change code in handy way, but readability is preferable.
+#### People do not want to learn and follow complex rules
 
-If you follow the first two points, then you can adjust other aspects as you *like*. Many developers put third "rule" above two others. I really do not recommend doing so. Instead I recommend, especially if you are in charge, set common style policy for all developers in your team - code should have only one style. Additionally, I strongly recommend setting up automatic style checking and formatting tools like ReSharper for C# or eslint for JavaScript. Together with this I can set up pre-commit hooks to follow style policies. However, leave some abilities to switch off these checks for particular cases. You may need it if you write matrix as one-dimensional array.
+That is part of people psychology and we cannot fight against.
 
-If you follow all recommendation you will get really readable easy modifiable code and you will like this code visually.
-You and any member of your team will be able to read your code easily, even if he won't understand it. Some developers say "It is better to have readable code and bad solution architecture than vice versa".
-Also, you will see that performance of your team is higher because of automatic tools and singly style.
+**The key take away:** Principles should be easy to follow and explain.
 
-# Readability
+#### There are people who do not care
 
-## Line length
+Unfortunately, that is true. Sometimes it is only because nobody explained why they should care. Sometimes they just do not care. The only thing can be done here is people who care should explain people who do not care why they should care too, and principles should help with that. Also following the recommendations or rules should be as easy as possible. Ideally tools should support the principles and help to follow them automagically.
 
-I **recommend limiting maximum length of a line of code** to **120** symbols.
+**The key take away:** Principles should help to persuade others to follow them. Principles should bring real value to everybody. Principles should be easy to follow.
 
-**Justification:**
+### And yet why?
 
-First of all, I would like to mention issues that unlimited line length gives. First of all, it decreases readability of your code, so it violates first recommendation. Too long line stops you from reading and understanding of code and forces you to use horizontal scrolling, what is unhandy and time-consuming. Also, long lines hide important parts of code abroad screen, if you do not see it you cannot take it in account and the possibility to introduce some issue is higher. For example, you can miss some important parameters or conditions.
+Ok, there is a lot of text with observations and what?
 
-So, conclusion is **it is bad to have too long lines**
+I found that process is like building of software. An architect comes to a customer's side. The customer starts to tell the architect what software should do but next architect questions will be likely "why should it do this and not that" and "what do you expect as result and how to understand that the result actually has good enough quality".
 
-But what line length is good? Let's think about how usual developer reads code and how we can do it in the fastest and handiest way. According to some researches the most convenient width of line to read is about 80-100 symbols. At this point we would say let's limit line width at 100 symbols. But let's also take in account that at the moment we often use wide-screen FullHD monitors with resolution at least (1920x1080). For example, in our company 24" Full HD monitors are standard.
-Also, the most common actions with code are:
-    - Reading
-    - Reading using one monitor but two panel editor
-    - Writing / Changing
-    - Writing / Changing in editor using two or more panels
-    - Comparing in tool with two panels
-    - Merge conflict solving in tool with three panels
-    - Pull request reading using tool or browser. Also, can be two panels.
+So, I still haven't described the initial reason, result and metrics to measure the result.
 
-Taking into account that you or your colleagues can use something with two panels for different purposes we have to choose line length which allows to see full line in both panels. The best place to check this is two panel comparison on GitHub when pull request is reviewed. I experimentally found out that 120 symbol line length is optimal for Full HD monitors:
-1. Usually you see all text in both panels
-2. Usually you see all text in both panels even if your colleague has poor eyesight and enlarged font size
-3. You have small buffer to add a few more symbols above 120 symbols limit if you do not have possibility to put something on new line.
+I think that the initial reason is "People would like to write code with pleasure". Pleasure can mean easy or when we like code visually. "To like our code" might be something about endorphins. The easiness might be an effect that our brain is a lazy bastard who doesn't like to work. The reason for that is evolution - our brain consumes too many resources to think a lot and properly, so he tries to cheat whenever is possible.
 
-If your team has different monitor sizes or different screen resolutions you can determine your own limit using two panels editor or GitHub pull request.
+**The key take away:** Principles should reduce amount of thinking while coding as much as possible and if possible make code nicer to give esthetic pleasure.
 
-Summarizing all mentioned above **by default** it is optimal to limit line length by **120** symbols.
+There is a second part - measurements. Unfortunately, I don't have an answer here. How can we measure easiness of coding or code? The only existing method that comes to my mind is measuring cyclomatic complexity. My observation that it helps indirectly but doesn't provide easy-enough-to-follow principles. It might be that an improved team productivity or happiness and reduced number of errors can be measured over time but those consist of so many variables that it is hard to say what add value. Has someone other ideas? Please read the article until the end first and let's discuss.
 
-# Writability and as result readability
+**The key take away:** how to measure pleasure?
 
-Code writing is something what readability depends on. First of all, I would like to continue the topic about how usual man reads text. In case of code it is from left to right top down. Man’s brain usually optimizes reading by mechanism that some scientists call Visual Thinking. The idea is next - when our brain processes information from eyes it makes assumptions about content based on often seen staff and its visual characteristics. It could be said that brain uses some kind of hash in key-value store for quick access to result. If a brain does not have associated result or result looks weird or invalid to our brain, then Logical Thinking mechanism is run. Logical thinking is a complete analysis of available information (full understanding of a code in our case).
+## Changing point. How?
 
-Example of such brain's behavior can be found in the Internet. There is an experiment when some color is written down, red for example, but font color for this text is blue. At first step our brain sees blue color + "red" text and assumes that result is blue but after that validation fails and brain runs Logical Thinking blue color + "red" text == ~~blue~~ red - precise result is red. The main issue with Logical Thinking mechanism that it is much slower than Visual Thinking.
+The key changing point for me happened when I watched [Kevlin Henney - Seven Ineffective Coding Habits of Many Programmers](https://vimeo.com/97329157) video. It highlights important things in a code style. The things there are quite important, but I would say they are still effects and not the base principles. Nevertheless, I think, there I found a link to the [Clean Up Your Mess — A Guide to Visual Design for Everyone](http://www.visualmess.com/) article from *Daniel Higginbotham*.
 
-**Conclusion**: it is worth to write code in a way when Visual Thinking is used as often as possible.
+The article is not even about programming it is about visual design and how to help our brain to understand things easier. Isn't it what we need during coding? We need to help our brains to reduce a cognitive load while we are expressing our masterpieces using plain text! That makes us happy and not tabs or spaces!
 
-How?
+The article highlights that there are two mechanisms of thinking Visual Thinking and Logical Thinking.
 
-Brain uses Visual Thinking as primary instrument if:
-1. Size of a text differs
-2. There is some distance between text elements
-3. Text is aligned
+Visual Thinking is kind of fast pattern matching or O(1) access to an in memory cache.
 
-We can achieve the first one by using symbols' case like below:
+Logical Thinking is fall back of Visual Thinking and kind of a cache miss and a complete recalculation and/or a data reload as result.
+
+So the brain cheating mechanism is actually an imperfectly implemented optimization.
+
+### Combining things together
+
+What helps a brain be move efficient? What characteristics of it should be taken in account in the principles? What do we know about coding process that can help to express the principles?
+
+Let me use a method I use when I need to analyze a lot of requirements and extract of them important, non-duplicated, good formulated and so on. I am placing all things in lists with some structure and nesting. I call them structured lists.
+
+#### Compacting and enriching the observations and axioms using structured list - iteration 1
+
+While coding we
+- read code 80% or time and write only 20%. I observe agreement that reading > writing but percents can vary. So reading is more important than writing
+- have own biases and preferences
+
+Coding is not just coding. Common actions are
+- Reading
+- Reading using one monitor but two panel editor
+- Writing first / Changing later
+- Writing / Changing in editor using two or more panels
+- Comparing / Comparing in a tool with two panels
+- Merge conflict solving in a tool with three panels
+- Pull request reading using tool or browser. Also, can be two panels.
+
+Readability improves when
+- our eyes have narrow vision area. If narrow vision is considered then
+  - line length limitation exists to
+    - get rid of horizontal scrolling that is unhandy and time-consuming
+    - get rid of long lines that hide important parts of code abroad screen
+  - line length limitation can be
+    - adjustable for a team hardware and habits
+      - default and recommended in range of 80-120 symbols
+    - two panel side by side should be visible and readable
+- visual thinking and pattern recognition -> O(1) access by hash
+- explicit is better than implicit
+  - things should be obvious when you read them
+
+Writability improves when
+- code is easy to write
+- code is sustainable
+  - modification does not trigger addition modifications
+  - code is not fragile
+    - your changes should not break code around
+
+Brain
+- is lazy and wants to do things as easy as possible
+- through eyes has narrow field of vision
+- has limited about of context it can efficiently access at once. *Limited register count?* 5 +- 2 rule.
+- can cheat and the cheating can be abused if proper instruments are used
+- according to Daniel Higginbotham article, the cheating = a brain reduces effort to read *(doesn't it what we need?)* if the brain uses Visual Thinking approach.
+  The mechanisms that start Visual Thinking
+  - Size
+  - Proximity
+  - Alignment
+  - Unnecessary is eliminated
+
+Hm, so
+- points from "Kevlin Henney - Seven Ineffective Coding Habits of Many Programmers" talk
+  - *Structural honesty* / *Finger point principle* is just a proper proximity
+  - *Unsustainable Spacing* is just a proper alignment and reducing effort of change
+- guidance *"Name variables shorter and do not include parts that are obvious from the context"* is just elimination of unnecessary
+
+According to the effort distribution during coding and the brain behavior, characteristics and efficiency mode, the principles should help to optimize
+1. **Readability** - reduction of reading effort has priority. Help to read easily first!
+2. **Writability** - reduction of writing effort as a second priority. Help to write easily, without additional cognitive load and additional actions, but do not contradict readability
+3. **Visual style** - code has to look more or less good to not irritate our brain. In general, this supports readability but people have different preferences so that part can vary depending on a language or team preferences but must not contradict to strict recommendations for better readability or writability.
+
+Priorities are **Readability**, **Writability**, **Visual style** exactly in this order.
+
+Now that makes more and more sense to me. **Visual Thinking is a key concept.** But how can it be used in code.
+
+#### Code accents with size
+
+To initiate Visual Thinking process with Size, taking into account that code is a text I see only one possible option - character case.
+
+For example
+
 ```csharp
 public const string SOME_SHOUTY_CONSTANT = "My const";
 ```
 
-We can achieve the second one by grouping code in logical blocks like following:
+*Concern to be considered:* the mechanism can disturb our mind and catch an attention of brain on the text size instead of text sense. That means that the mechanism must be used carefully and when such attention is mandatory.
+
+#### Proximity or code blocks
+
+The proximity can be achieved by using the new line as a separator of logically related code blocks.
+
+For example:
 
 ```csharp
 public ResultType ArbitraryMethodName(
@@ -98,13 +161,59 @@ public ResultType ArbitraryMethodName(
     ThirdArgumentType thirdArgument
 )
 {
-    LocalVariableType localVariable = Method(
-        firstArgument,
-        secondArgument
-    );
+    LocalVariableType localVariable = Method(firstArgument, secondArgument);
 
-    if (localVariable.IsSomething(thirdArgument,
-        SOME_SHOUTY_CONSTANT))
+    localVariable = DoSomethingWith1(localVariable);
+    localVariable = DoSomethingWith2(localVariable);
+    localVariable = DoSomethingWith3(localVariable);
+
+    if (localVariable.IsSomething(thirdArgument, SOME_SHOUTY_CONSTANT))
+    {
+        DoSomethingWith3(localVariable);
+    }
+
+    return localVariable.GetSomething();
+}
+```
+
+Although there are "obfuscated" names my brain highlights following blocks
+- Method definition
+- Initialization based on input arguments
+- Processing
+- Conditional processing based on the input arguments
+- Return of the result
+
+*SOME_SHOUTY_CONSTANT attracts a lot of attention*
+
+#### Alignment and structural honesty
+
+Alignment is often and widely used in the code. In the code below alignment is used for:
+- vertical alignments of method arguments
+- vertical alignments of LINQ methods
+- vertical alignments of instructions within the method
+- vertical alignment of `Method` method borders
+- vertical alignment of `Method` arguments
+- vertical alignment of if conditions
+
+```csharp
+public ResultType ArbitraryMethodName(
+    FirstArgumentType firstArgument,
+    SecondArgumentType secondArgument,
+    ThirdArgumentType thirdArgument
+)
+{
+    LocalVariableType localVariable =
+        firstArgument
+            .Concat(secondArgument)
+            .Where(...)
+            .Take(3)
+            .Select(...);
+
+    if (
+        localVariable.IsSomething(thirdArgument, SomeConstant)
+        && localVariable.IsSomething2(thirdArgument, SomeConstant)
+        && localVariable.IsSomething3(thirdArgument, SomeConstant)
+    )
     {
         DoSomethingWith(localVariable);
     }
@@ -113,111 +222,155 @@ public ResultType ArbitraryMethodName(
 }
 ```
 
-## Alignment (third point)
+*Consideration* to simplify writing and modification horizontal alignment must be avoid as it leads to Unsustainable code during modification. Although IDE or autoformatting might fix it, it should not take additionally effort to format code after modifications.
 
-Examples above also contain alignment.
+#### Alignment and Proximity together give patterns to our brain
 
-If speak short, then New Line + Indent should be used for alignment. That means Enter and Tab. Tab can be set up to tabulation, 2, 4 or N spaces. I **strongly recommend** to use spaces because you will always be precise in your formatting and will not depend on editor. For example, it is important for GitHub pull request.
+If you take a screenshot of your code and you can draw rectangles around each code block in some "Paint" then the proximity and alignment are correct.
 
-**Strong recommendation**: group and align your blocks by New Line. If some block refers to previous line add one Indent to it.
+```
+XXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXX XXXXXXXXXXXXX
+X
+X
+    XXXXXXXXXXXXXXXXX XXXXXXXXXXXXX X
+        XXXXXXXXXXXXX
+            XXXXXXXXXXXXXXXXXXXXXXX
+            XXXXXXXXXXX
+            XXXXXXXX
+            XXXXXXXXXXXXX
 
-**Justification:**
+    XX X
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXX
+        XX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXX
+        XX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXX
+    X
+    X
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    X
 
-The goal is to make brain use Visual Thinking.
-So why only New Lines and Indents? If you check my second initial recommendation - the code should be easily modifiable and supportable. Often developers like to align code in following way:
-
-```Java
-int doNotFormat = likeThis(someArgumentOrExpression,
-                           anotherArgumentOrExpression);
+    XXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X
 ```
 
-From one point of view the brain will use Visual Thinking and it is true but from other point of view supportability is broken. For example, we used refactoring and renamed function. After that alignment and as result Visual Thinking is broken.
+![Code blocks](./images/code-blocks.png)
 
-**Conclusion**: code has to be sustainable to changes. It is much better to write:
+#### Eliminating unnecessary
 
-```Java
-int insteadFormat =
-    somethingLikeThis(
-        someArgumentOrExpression,
-        anotherArgumentOrExpression
-    );
+This concept belongs to naming things.
 
+For example instead of
 
-int orFormat = somethingLikeThis(
-    someArgumentOrExpression,
-    anotherArgumentOrExpression);
-
-
-int orFormat = somethingLikeThis(
-    someArgumentOrExpression,
-    anotherArgumentOrExpression
-);
+```csharp
+public interface UserRepository
+{
+    User GetUserByUserId(int userId);
+}
 ```
 
-Personally, I recommend the last one because it has more explicit parameters block, adding or swapping parameters is easier.
+it is better to write the code as below
 
-Why following is bad:
-
-```Java
-int insteadFormat = somethingLikeThis(someArgumentOrExpression,
-    anotherArgumentOrExpression);
+```csharp
+public interface UserRepository
+{
+    User GetBy(int id);
+}
 ```
 
-It is worth mentioning that well readable code is often such because of good-named functions, methods and variables (self-descriptive code). If you decide to improve readability and renamed something you can get following:
+#### Compacting and enriching the observations and axioms using structured list - iteration 2
 
-```Java
-int longNameBecauseINeedItForBetterReadability = somethingLongNamedFunctionForBetterReadability(someArgumentOrExpression,
-    anotherArgumentOrExpression);
-```
+- **Readability** > **Writability** > **Visual style** - exactly in this order
+  - choose less conveniently, but more readable style
+  - write and change code in the handiest and easiest way
+    - writability second and as result readability
+    - result code must
+      - be sustainable to changes
+      - trigger Visual Thinking to abuse it
+        - `New Line` for achieving proximity
+        - `New Line` and `Indents` to achieve alignment
+          - `One indent` is usually more than enough
+          - Indent can be 2, 4 or N spaces as spaces are stable
+            - 4 spaces is preferable
+              - 4 spaces are not to narrow as 2 and better recognizable than 2
+              - 4 spaces are not to wide as 8 and do not lead to 120 symbols width violation
+              - ? ~~3 might work as well~~
+                - not widely used
+                - should not be considered
 
-As you see parameters are separated in this case. Someone renamed function in other place but broke readability here. So, the example above is not sustainable.
 
-# Summary
+## Principles
 
-**What do we do:**
-- Consider Readability > Writability > Visual Style
-- Consider Visual Thinking > Logical thinking. For that use:
+So what do I have as result? Strong Recommendations to follow are:
+
+### What do we do
+- Readability > Writability > Visual Style
+- Force Visual Thinking before Logical thinking. For that use:
     - Line limit <= 120 (by default)
     - Group logic blocks by adding New Lines between
-    - Use alignment by New Line and Indent
+    - Use only vertical alignment with New Line and Indent
     - Keep in mind code has to be sustainable
+    - Use context to reduce unnecessary
 
-**How do we do:**
+### How do we do:
 - Use Enter for New Line
 - Use Tab for indention
 
-As simple as possible!
+That is it. As simple as possible.
 
-**What do we get:**
+### What do we get
 - Really quick reading from left to right top down with using only vertical scroll
-- Our brain processes only really important part and does not check unimportant by filtering them out all by using Visual Thinking. As result your productivity and performance are improved as well as productivity of your team
+- Our brain processes only important part and does not check unimportant by filtering them out all with using Visual Thinking
+- As result team productivity and performance are improved
 - Code modifications do not require addition efforts
-- Code looks at least good and has one style.
+- Code looks at least good and has one style
 
-# More to read about?
+*Funny note: Python has mandatory formatting rules that follow the principles. You can break only one thing: write unstable code if you use horizontal alignment, for example, when you align method arguments*
 
-> To answer the question "What is clean design?" most succinctly: a clean design is one that supports visual thinking, so people can meet their informational needs with a minimum of conscious effort.
-*Daniel Higginbotham*
-*"Clean Up Your Mess — A Guide to Visual Design for Everyone"*
-[Site](http://www.visualmess.com/)
+### What is achieved
 
-[Kevlin Henney - Seven Ineffective Coding Habits of Many Programmers](https://vimeo.com/97329157)
+- [x] It would be great to have non-biased cross language principles
+  - I think achieved
+- [x] Principles as **recommendations**
+  - I think they are
+- [x] Principles should be easy to follow and explain
+  - I think they are
+- [x] Principles should help to persuade others to follow them
+  - I think they are
+- [x] Principles should bring real value for everybody
+  - I think they are
+- [x] Principles should be easy to follow.
+  - I think they are
+- [ ] Principles should reduce amount of thinking while coding as much as possible and if possible make code nicer to give esthetic pleasure
+  - [x] I think principles **significantly** reduce amount of thinking
+  - [ ] Unfortunately, code does not look nicer, at least to me
+- [ ] How to measure pleasure?
 
-# Examples
+## Examples + additional recommendations
 
-I **strongly recommend** all expression blocks **always** wrap out with bracers or other ways of explicit block declarations like below:
+I **strongly recommend** all expression blocks **always** wrap with brackets or other ways of explicit block declarations like below
 
 *C\#*
 ```csharp
 public ResultType ArbitraryMethodName(
     FirstArgumentType firstArgument,
     SecondArgumentType secondArgument,
-    ThirdArgumentType thirdArgument)
+    ThirdArgumentType thirdArgument
+)
 {
-    LocalVariableType localVariable = Method(
-        firstArgument,
-        secondArgument
-    );
+    LocalVariableType localVariable = 
+        Method(
+            firstArgument,
+            secondArgument
+        );
+
+    localVariable = Method2(localVariable, thirdArgument);
+
+    if (localVariable.IsSomething(secondArgument, SOME_SHOUTY_CONSTANT))
+    {
+        DoSomethingWith(localVariable);
+    }
 
     if (
         localVariable.IsSomething(
@@ -233,24 +386,8 @@ public ResultType ArbitraryMethodName(
 }
 ```
 
-Also **never** never write different logical parts in one line like below:
-
-*C\#*
-```csharp
-public ResultType ArbitraryMethodName(
-    FirstArgumentType firstArgument,
-    SecondArgumentType secondArgument,
-    ThirdArgumentType thirdArgument)
-{
-    LocalVariableType localVariable = Method(firstArgument, secondArgument);
-    if (localVariable.IsSomething()) return default(ResultType);
-    return localVariable.GetSomething();
-}
-```
-
-Much better:
-
 *JavaScript*
+
 ```javascript
 function arbitraryMethodName(
     firstArgument,
@@ -264,26 +401,22 @@ function arbitraryMethodName(
         secondArgument
     );
 
-    if (!localVariable.IsSomething())
-    {
+    if (!localVariable.IsSomething()) {
         return
     }
 
-    if (localVariable.IsSomething(
-        thirdArgument,
-        SOME_SHOUTY_CONSTANT))
-    {
+    if (
+        localVariable.IsSomething(
+            thirdArgument,
+            SOME_SHOUTY_CONSTANT
+        )
+    ) {
         doSomethingWith(localVariable);
     }
 
     return localVariable.getSomething();
 }
-```
 
-Here is one more practice I **recommend**. If you have really long condition in if-statement, consider extracting it to local variable with meaningful name.
-
-*JavaScript*
-```javascript
 function arbitraryMethodName(
     firstArgument,
     secondArgument,
@@ -291,17 +424,13 @@ function arbitraryMethodName(
 ) {
     doSomethingWith(localVariable);
 
-    var isSomething = method(
-        firstArgument,
-        secondArgument
-    );
+    var enabled = method(firstArgument, secondArgument);
 
-    var isSomething = localVariable.IsSomething(
-        thirdArgument,
-        SOME_SHOUTY_CONSTANT
-    );
+    enabled =
+        enabled
+        && localVariable.IsSomething(thirdArgument, SOME_SHOUTY_CONSTANT);
 
-    if (isSomething)
+    if (enabled)
     {
         doSomethingWith(localVariable);
     }
@@ -310,7 +439,7 @@ function arbitraryMethodName(
 }
 ```
 
-Example of style together with chaining. The same principal can be used for string concatenation by `+`
+Example of chaining. The key point is putting `operations` in front to understand immediately what is done with the line. Further reading can be skipped if you are not interested in the `operation` details.
 
 *C\#*
 ```csharp
@@ -327,6 +456,33 @@ public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels)
 ```
 
 ```csharp
+public IEnumerable<TrackViewModel> Sort(IEnumerable<TrackViewModel> viewModels) =>
+    viewModels
+        .OrderBy(item => item.LoweredAlbumArtist)
+        .ThenBy(item => item.AlbumNameForSorting)
+        .ThenBy(item => item.Year)
+        .ThenBy(item => item.DiskNumber)
+        .ThenBy(item => item.TrackNumber)
+        .ThenBy(item => item.Title);
+```
+
+```csharp
+public IEnumerable<TrackViewModel> Sort(
+    IEnumerable<TrackViewModel> viewModels,
+    FirstArgumentType firstArgument,
+    SecondArgumentType secondArgument,
+    ThirdArgumentType thirdArgument
+) =>
+    viewModels
+        .OrderBy(item => item.LoweredAlbumArtist)
+        .ThenBy(item => item.AlbumNameForSorting)
+        .ThenBy(item => item.Year)
+        .ThenBy(item => item.DiskNumber)
+        .ThenBy(item => item.TrackNumber)
+        .ThenBy(item => item.Title);
+```
+
+```csharp
 public override string ToString()
 {
     return $"{ArtistName};"
@@ -337,55 +493,47 @@ public override string ToString()
         + $"{TrackNumber};"
     ;
 }
+
+public override string ToString() =>
+    $"{ArtistName};"
+    + $"{AlbumName};"
+    + $"{Title};"
+    + $"{Year};"
+    + $"{DiskNumber};"
+    + $"{TrackNumber};"
+    ;
 ```
 
-Following example shows **recommendation** for lambda function formatting. Also, I **recommend** writing comments for code that is impossible to quickly understand. It is much faster to read comment.
+Lambda functions example. Parameters of lambda and its body form a block of code.
 
 *C\#*
 ```csharp
-// Processing added or updated libraries
-IEnumerable<ILibrary> addedLibraries = state
-    .Libraries
-    .Where(
-        libraryKeyValuePair =>
-        {
-            ILibrary existingLibrary = _libraries
-                .GetValueOrDefault(libraryKeyValuePair.Key);
+Dictionary<string, ILibrary> libraries = 
+    state
+        .Libraries
+        .Where(
+            libraryKeyValuePair =>
+            {
+                ILibrary existingLibrary = _libraries.GetValueOrDefault(libraryKeyValuePair.Key);
 
-            // The library is added
-            return existingLibrary == null
-                // Library has been changed
-                || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
-        }
-    )
-    .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
+                return existingLibrary == null
+                    || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
+            }
+        )
+        .Select(libraryKeyValuePair => libraryKeyValuePair.Value)
+        .ToDictionary(
+            item => 
+            {
+                string key = item.Name;
+                ...
+                return key;
+            },
+            item => item,
+            StringComparer.Ordinal
+        )
 ```
 
-Following example shows how to make things much worse - just use a bit of implicitness by introducing var. I **strongly recommend** using explicit declaration always where it is possible in any language. That will allow to read and understand code much quicker without using much of Logic Thinking.
-
-Holy War begins here. Usual objection is "you can hover your mouse over variable". Consider that you are reading pull request in a browser hover your mouse over variable and think how much information your browser shows. Also, how much more time did you spend to hovering mouse over instead of just reading?
-
-*C\#*
-```csharp
-// Processing added or updated libraries
-var addedLibraries = state
-    .Libraries
-    .Where(
-        libraryKeyValuePair =>
-        {
-            var existingLibrary = _libraries
-                .GetValueOrDefault(libraryKeyValuePair.Key);
-
-            // The library is added
-            return existingLibrary == null
-                // Library has been changed
-                || !ReferenceEquals(libraryKeyValuePair.Value, existingLibrary);
-        }
-    )
-    .Select(libraryKeyValuePair => libraryKeyValuePair.Value);
-```
-
-Complex constructor example:
+Complex constructor example
 
 *C\#*
 ```csharp
@@ -409,27 +557,15 @@ ImageFilteringDrawerPool<ArtistViewModel> imageFilteringDrawerPool =
     );
 ```
 
-Complex if-statement example. It might be a good choice to extract result of the condition to local variable with meaningful name. It gives you understanding what is going on. Or at least put a commentary.
-
-*C\#*
-```csharp
-if (range.TryGetValue("Group", out groupName)
-    && range.TryGetValue("RIC", out ric)
-    && (range.TryGetValue("ProcessedAt", out processedAtStr)
-        || range.TryGetValue("Start", out startStr))
-    && TimeSpan.TryParse(startStr, out start)
-    && range.TryGetValue("End", out endStr)
-    && TimeSpan.TryParse(endStr, out end)
-    && DateTime.TryParse(processedAtStr, out processedAt))
-{
-```
+Complex if-statement example
 
 *C\#*
 ```csharp
 if (
     range.TryGetValue("Group", out groupName)
     && range.TryGetValue("RIC", out ric)
-    && (range.TryGetValue("ProcessedAt", out processedAtStr)
+    && (
+        range.TryGetValue("ProcessedAt", out processedAtStr)
         || range.TryGetValue("Start", out startStr)
     )
     && TimeSpan.TryParse(startStr, out start)
@@ -438,6 +574,7 @@ if (
     && DateTime.TryParse(processedAtStr, out processedAt)
 )
 {
+}
 ```
 
 *SQL*
@@ -456,22 +593,34 @@ order by
     t2.Name
 ```
 
-*JSX*
-```jsx
-<div className='top-menu' >
-  <Link
-    to='/settings'
-    className='top-menu__setting-link'
-  >
-    {user.name || user.email}
-  </Link>
-  <button
-    onClick={logOut}
-    className='top-menu__logout-button'
-  >
-    Log out
-  </button>
-</div>
+*React*
+```tsx
+export function MyMenu(props: MyProps) {
+    const { user, logOut } = props;
+
+    const userName = 
+        useMemo(
+            () => user.name || user.email,
+            [ user]
+        );
+
+    return (
+        <div className='top-menu' >
+            <Link
+                to='/settings'
+                className='top-menu__setting-link'
+            >
+                {userName}
+            </Link>
+            <button
+                onClick={logOut}
+                className='top-menu__logout-button'
+            >
+                Log out
+            </button>
+        </div>
+    );
+}
 ```
 
 *Xaml*
